@@ -1,0 +1,4 @@
+Underscore style templates on LAMP Servers
+==========================================
+
+In my html classes I introduced the DRY principle. The first time I did this with server side includes. The second time with underscore style templates that rendered a layout and body server side with node.js. Node.js is offered by a lot of hosts, but not nearly as many as offer LAMP. LAMP also gives me the possibility of having a more WebMatrix like Database helper instead of mysql2 that I used on node.js. My overall vision is to have a full-stack experience using Phabricator, underscore templates, both client and server side and Drupal. 
