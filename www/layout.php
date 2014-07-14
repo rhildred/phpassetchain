@@ -1,0 +1,4 @@
+Rich was here, 
+<?php
+renderBody();
+?>

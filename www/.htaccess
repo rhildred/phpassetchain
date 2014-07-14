@@ -4,6 +4,11 @@ RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
 RewriteRule ^(.*)$ - [E=BASE:%1]
 
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.%{TIME_YEAR}.html -f
+# Rewrite /foo/bar to /foo/bar.html
+RewriteRule ^([^.?]+)$ %{REQUEST_URI}.%{TIME_YEAR}.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}.html -f
 # Rewrite /foo/bar to /foo/bar.html
 RewriteRule ^([^.?]+)$ %{REQUEST_URI}.html [L]
