@@ -14,10 +14,6 @@ class TestOfTemplates extends UnitTestCase {
     	$sTest = file_get_contents("http://localhost/~rhildred/phpassetchain/public/newFile");
     	$this->assertEqual($sTest, "Rich was here");
     }
-    function TestYear() {
-    	$sTest = file_get_contents("http://localhost/~rhildred/phpassetchain/public/YearTest");
-    	$this->assertEqual($sTest, "The Year is 2014");
-    }
     function TestTemplate() {
     	$sTest = file_get_contents("http://localhost/~rhildred/phpassetchain/public/templated");
     	$this->assertEqual($sTest, "Rich was here, \nSo There!");
