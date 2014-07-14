@@ -2,7 +2,8 @@
 
 require_once '../lib/template.php';
 
-$sScript = array_pop(explode("/", $_SERVER['REQUEST_URI']));
+$aPath = explode("/", $_SERVER['REQUEST_URI']);
+$sScript = array_pop($aPath);
 if($sScript == "") $sScript = "index";
 if(file_exists($sScript . ".js.html")){
 	$sContents = file_get_contents($sScript  . ".js.html" );
