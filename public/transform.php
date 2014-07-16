@@ -1,10 +1,9 @@
 <?php 
 
 require_once '../lib/template.php';
+$sScript = dirname(__FILE__) . $_SERVER['PATH_INFO'];
+if(substr($sScript, -1) == "/") $sScript .= "index";
 
-$aPath = explode("/", $_SERVER['REQUEST_URI']);
-$sScript = array_pop($aPath);
-if($sScript == "") $sScript = "index";
 if(file_exists($sScript . ".js.html")){
 	$sContents = file_get_contents($sScript  . ".js.html" );
 	$aContents = preg_split("/(<%)/m", $sContents, -1, PREG_SPLIT_DELIM_CAPTURE);
@@ -34,6 +33,14 @@ EOF;
 	$sFName = $sScript . "." . date("Y") . ".html";
 	file_put_contents($sFName, $Viewbag->sOut);
 	include $sFName;
+}
+
+function showcopyright(){
+	$nYear = date("Y");
+	if($nYear != 2013){
+		echo "2013-";
+	}
+	echo $nYear;
 }
 
 
