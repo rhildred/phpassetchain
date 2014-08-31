@@ -24,7 +24,30 @@ function renderBody(){
 	if(isset($Viewbag->sScript)){
 		include($Viewbag->sScript . ".phtml");
 	}else{
-		include($Viewbag->sPage . ".phtml");
+		if(file_exists($Viewbag->sPage)){
+			include($Viewbag->sPage);
+		}else{
+			include($Viewbag->sPage . ".phtml");
+		}
+
+	}
+}
+
+require_once(dirname(__FILE__) . '/php-markdown-lib/Michelf/MarkdownExtra.inc.php');
+
+function renderMarkdown($sFname){
+	echo \Michelf\MarkdownExtra::defaultTransform(file_get_contents($sFname));
+}
+
+function renderPartial($oCollection, $sPartial)
+{
+	global $Viewbag;
+	if(!is_array($oCollection)){
+		$oCollection = json_decode(file_get_contents($oCollection));
+	}
+	foreach($oCollection as $oModel){
+		$Viewbag->model = $oModel;
+		include $sPartial;
 	}
 }
 
