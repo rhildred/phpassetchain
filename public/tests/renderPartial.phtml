@@ -1,0 +1,8 @@
+<?php
+if(!function_exists('layout')) include_once '../../lib/template.php';
+layout("_layout.phtml");
+?>
+<ul>
+  <?php renderPartial(array((object)array('test'=>1), (object)array('test'=>2), (object)array('test'=>3)), '_partial.phtml');
+  ?>
+</ul>
